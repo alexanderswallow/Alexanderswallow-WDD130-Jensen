@@ -1,22 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soup Time</title>
-    <link rel="stylesheet" href="style/style.css">
-   
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soup Time</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-     <header>
-        <nav> <nav class="navbar">
-    <a href="index.html">Home</a>
+
+  <header>
+    <div class="header-inner">
+      <nav class="nav-panel">
+        <a href="archive.html">Archive</a>
+        <a href="email.html">Feed</a>
+        <a href="index.html" class="nav-sub">1. Spiders</a>
+        <a href="index.html" class="nav-sub">2. Queen</a>
+        <a href="index.html" class="nav-sub">3. Prime soul</a>
+        <a href="email.html" class="nav-sub">Subscribe to the feed</a>
+      </nav>
+      <div class="logo-area">
+        <svg class="logo-svg" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="6" width="20" height="20" stroke="#FF7D00" stroke-width="3" fill="none" stroke-linejoin="round"/>
+          <line x1="6" y1="26" x2="34" y2="26" stroke="#FF7D00" stroke-width="3" stroke-linecap="round"/>
+          <line x1="10" y1="32" x2="10" y2="44" stroke="#FF7D00" stroke-width="3" stroke-linecap="round"/>
+          <polyline points="14,36 24,28 34,36" stroke="#FF7D00" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <span class="site-title">Soup Time</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="comic-viewer">
+      <div class="comic-controls">
+        <button class="ctrl-btn" onclick="goFirst()">|&lt;</button>
+        <button class="ctrl-btn" onclick="goPrev()">&lt; prev</button>
+        <button class="ctrl-btn" onclick="goRandom()">random</button>
+        <button class="ctrl-btn" onclick="goNext()">next &gt;</button>
+        <button class="ctrl-btn" onclick="goLast()">&gt;|</button>
+      </div>
+
+      <div class="comic-frame">
+        <div class="comic-title" id="comic-title">Spiders</div>
+        <div class="comic-desc" id="comic-desc">A mathematical arachnid adventure on graph paper.</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>© Soup Time &nbsp;·&nbsp; WDD 130 &nbsp;·&nbsp; Cody Jensen</footer>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="active">Home</a>
     <a href="archive.html">Archive</a>
     <a href="email.html">Email</a>
-</nav>
-    </header>
+  </nav>
 
-<img src="images/cjlogo.png" alt="Site Logo">
+  <script>
+    const comics = [
+      { title: "Spiders",    desc: "A mathematical arachnid adventure on graph paper." },
+      { title: "Queen",      desc: "Regal character study in ink and silence." },
+      { title: "Prime soul", desc: "Where prime numbers meet the spirit world." },
+    ];
+    let i = comics.length - 1;
+
+    function update() {
+      document.getElementById('comic-title').textContent = comics[i].title;
+      document.getElementById('comic-desc').textContent  = comics[i].desc;
+    }
+    function goFirst()  { i = 0;                      update(); }
+    function goLast()   { i = comics.length - 1;      update(); }
+    function goNext()   { i = Math.min(i + 1, comics.length - 1); update(); }
+    function goPrev()   { i = Math.max(i - 1, 0);    update(); }
+    function goRandom() { i = Math.floor(Math.random() * comics.length); update(); }
+  </script>
 
 </body>
 </html>

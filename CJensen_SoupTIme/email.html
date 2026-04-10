@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soup Time – Subscribe</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <svg class="logo-svg" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="6" width="20" height="20" stroke="#FF7D00" stroke-width="3" fill="none" stroke-linejoin="round"/>
+          <line x1="6" y1="26" x2="34" y2="26" stroke="#FF7D00" stroke-width="3" stroke-linecap="round"/>
+          <line x1="10" y1="32" x2="10" y2="44" stroke="#FF7D00" stroke-width="3" stroke-linecap="round"/>
+          <polyline points="14,36 24,28 34,36" stroke="#FF7D00" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <span class="site-title">Soup Time</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="email-card">
+      <p>To receive the comic and news postings in your inbox, subscribe here.</p>
+      <input type="email" id="email-input" placeholder="place to enter email" />
+      <button class="subscribe-btn" onclick="handleSubscribe()">subscribe</button>
+      <div class="success-msg" id="subscribe-success">
+        ✓ You're subscribed! Comics incoming.
+      </div>
+    </div>
+  </main>
+
+  <footer>© Soup Time &nbsp;·&nbsp; WDD 130 &nbsp;·&nbsp; Cody Jensen</footer>
+
+  <nav class="bottom-nav">
+    <a href="index.html">Home</a>
+    <a href="archive.html">Archive</a>
+    <a href="email.html" class="active">Email</a>
+  </nav>
+
+  <script> /*used ai to get a functioning script for an email input*/
+    function handleSubscribe() {
+      const input = document.getElementById('email-input');
+      const msg   = document.getElementById('subscribe-success');
+      if (input.value && input.value.includes('@')) {
+        msg.classList.add('visible');
+        input.value = '';
+      } else {
+        input.style.borderColor = '#ff4444';
+        setTimeout(() => input.style.borderColor = 'var(--accent2)', 1500);
+      }
+    }
+  </script>
+
+</body>
+</html>
